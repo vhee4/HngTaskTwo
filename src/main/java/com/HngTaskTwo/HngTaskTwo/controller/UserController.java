@@ -17,17 +17,16 @@ public class UserController {
     public User createUser(@RequestBody UserRequestDto request) {
         return userService.createUser(request);
     }
-    @PutMapping
-    public User UpdateUser(@RequestBody UpdateRequestDto request) { //change this one to path variable
-        return userService.updateUser(request);
+    @PutMapping("/{user_id}")
+    public User UpdateUser(@PathVariable Long user_id, @RequestBody UserRequestDto request) {
+        return userService.updateUser(user_id,request);
     }
-    @DeleteMapping("/{id}")
-    public String  deleteUser(@PathVariable("id") Long id) {
-        return userService.deleteUser(id);
+    @DeleteMapping("/{user_id}")
+    public String  deleteUser(@PathVariable Long user_id) {
+        return userService.deleteUser(user_id);
     }
-    @GetMapping("/{id}")
-    public User getUser(@PathVariable("id") Long id) {
-        return userService.getUser(id);
+    @GetMapping("/{user_id}")
+    public User getUser(@PathVariable Long user_id) {
+        return userService.getUser(user_id);
     }
-
 }
